@@ -1,3 +1,4 @@
+import locale
 import subprocess
 import os
 import pathlib
@@ -68,14 +69,18 @@ def run_process_checkret(args, check=True):
         logger.warning(f"Command '{e.cmd}' returned non-zero exit status {e.returncode}.")
     except Exception as e:
         logger.warning(f"An error occurred executing {e}")
-        
+    
+    # handle output with proper Windows encoding
+    # Use the preferred encoding for console output on Windows
+    encoding = locale.getpreferredencoding(False) or 'cp1252'
+
     # handle output
     stdout_s = ""
     if ret.stdout != None:
-        stdout_s = ret.stdout.decode('utf-8', errors='replace')
+        stdout_s = ret.stdout.decode(encoding, errors='replace')
     stderr_s = ""
     if ret.stderr != None:
-        stderr_s = ret.stderr.decode('utf-8', errors='replace')
+        stderr_s = ret.stderr.decode(encoding, errors='replace')
 
     # log it
     observer.add_cmd_output(">>> {}\n".format(" ".join(args)))
