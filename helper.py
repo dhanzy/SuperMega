@@ -72,10 +72,10 @@ def run_process_checkret(args, check=True):
     # handle output
     stdout_s = ""
     if ret.stdout != None:
-        stdout_s = ret.stdout.decode('utf-8')
+        stdout_s = ret.stdout.decode('utf-8', errors='replace')
     stderr_s = ""
     if ret.stderr != None:
-        stderr_s = ret.stderr.decode('utf-8')
+        stderr_s = ret.stderr.decode('utf-8', errors='replace')
 
     # log it
     observer.add_cmd_output(">>> {}\n".format(" ".join(args)))
