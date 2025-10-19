@@ -69,7 +69,7 @@ Browse to `http://localhost:5001".
 
 ## Usage Command LIne
 
-Example to inject `calc64.exe` shellcode into `7z.exe`:
+Example to inject `calc64.bin` shellcode into `procexp64.exe`:
 
 ```
 PS C:\Users\dobin\Repos\SuperMega> cmd.exe /k "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
@@ -108,6 +108,8 @@ C:\Users\dobin\Repos\SuperMega>python.exe supermega.py
 (injector.py     )     Inject Carrier data into injectable .rdata/.text
 (injector.py     )     Patch Carrier code to reference the injected data
 (injector.py     ) -[ Write to file: projects/commandline/procexp64.infected.exe
+
+> C:\Users\dobin\Repos\SuperMega>.\projects\commandline\procexp64.infected.exe
 ```
 
 To inject shellcode `messagebox.bin` into injectable `procexp64.exe` with carrier `alloc_rw_rx` and decoder `xor_1`, where: 
